@@ -1,0 +1,56 @@
+// C++ implementation of the approach
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to reverse the given word except
+// the first and the last character
+string reverseWord(string str)
+{
+	int len = str.length();
+
+	// Pointer to the second character
+	// of the string
+	int i = 1;
+
+	// Pointer to the second last
+	// character of the string
+	int j = str.length() - 2;
+	while (i < j) {
+
+		// Swap str[i] and str[j]
+		char temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;
+	}
+
+	return str;
+}
+
+// Function to reverse every word of the
+// sentence except the first and the
+// last character of the words
+void reverseWords(char str[])
+{
+	char* tok = strtok(str, " ");
+
+	// While there are words left
+	while (tok != NULL) {
+
+		// Print the reversed word
+		cout << reverseWord(tok) << " ";
+
+		// Get the next word
+		tok = strtok(NULL, " ");
+	}
+}
+
+// Driver code
+int main()
+{
+	char str[] = "geeks for geeks";
+	reverseWords(str);
+
+	return 0;
+}
